@@ -1,10 +1,10 @@
-import { RouteObject } from "react-router-dom";
-import HomePage from "../pages/HomePage";
+import { RouteObject } from 'react-router-dom';
+import HomePage from '../pages/HomePage';
 
 export const routes: RouteObject[] = [
   {
-    id: "home-page",
-    path: "/",
+    id: 'home-page',
+    path: '/',
     element: <HomePage />,
   },
 ];
