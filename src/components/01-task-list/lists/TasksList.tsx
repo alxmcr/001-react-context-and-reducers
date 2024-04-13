@@ -15,7 +15,7 @@ export default function TasksList({ tasks = [] }: Props) {
   }
 
   return (
-    <ul>
+    <ul className="flex flex-col gap-3">
       {tasks.map((task) => (
         <TaskItem key={task.id} task={task} />
       ))}
