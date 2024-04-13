@@ -13,9 +13,9 @@ export default function BoxTaskList() {
     );
   }
 
-  if (LoadingStates.SUCCESS === statusTasks) {
-    return <div>{tasks.length === 0 ? <TasksList tasks={tasks} /> : null}</div>;
-  }
-
-  return null;
+  return (
+    <div>
+      {tasks.length === 0 ? <p>No tasks</p> : <TasksList tasks={tasks} />}
+    </div>
+  );
 }

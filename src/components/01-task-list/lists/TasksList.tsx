@@ -6,6 +6,14 @@ type Props = {
 };
 
 export default function TasksList({ tasks = [] }: Props) {
+  if (tasks.length === 0) {
+    return (
+      <div>
+        <p>NO tasks</p>
+      </div>
+    );
+  }
+
   return (
     <ul>
       {tasks.map((task) => (
