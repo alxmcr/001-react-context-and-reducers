@@ -1,5 +1,6 @@
 import { LoadingStates } from '../../../@enums/appEnums';
 import useTasks from '../../../hooks/useTasks';
+import FormCreateTask from '../forms/FormCreateTask';
 import TasksList from '../lists/TasksList';
 
 export default function BoxTaskList() {
@@ -15,7 +16,8 @@ export default function BoxTaskList() {
 
   return (
     <div>
-      {tasks.length === 0 ? <p>No tasks</p> : <TasksList tasks={tasks} />}
+      <FormCreateTask />
+      <TasksList tasks={tasks} />
     </div>
   );
 }
