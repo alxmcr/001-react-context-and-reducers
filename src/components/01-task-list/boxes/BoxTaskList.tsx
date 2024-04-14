@@ -1,18 +1,10 @@
-import { LoadingStates } from '../../../@enums/appEnums';
-import useTasks from '../../../hooks/useTasks';
+import React from 'react';
+import { TasksContext } from '../../../providers/TasksContext';
 import FormCreateTask from '../forms/FormCreateTask';
 import TasksList from '../lists/TasksList';
 
 export default function BoxTaskList() {
-  const { tasks, statusTasks } = useTasks();
-
-  if (LoadingStates.PENDING === statusTasks) {
-    return (
-      <div>
-        <p>Loading tasks...</p>
-      </div>
-    );
-  }
+  const tasks = React.useContext(TasksContext);
 
   return (
     <div>

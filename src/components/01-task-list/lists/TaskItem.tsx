@@ -16,13 +16,7 @@ export default function TaskItem({ task }: Props) {
   return (
     <li className="flex items-center justify-between gap-3">
       <label htmlFor={task.id} className="flex items-center gap-3">
-        <input
-          type="checkbox"
-          name={task.id}
-          id={task.id}
-          className="size-8"
-          checked={task.done}
-        />
+        <input type="checkbox" name={task.id} id={task.id} className="size-8" />
         <span>{task.name}</span>
       </label>
       <div className="flex items-center gap-4">

@@ -1,7 +1,11 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { TaskData } from '../../../@types/appTypes';
+import { TasksDispatchContext } from '../../../providers/TasksContext';
 
 export default function FormCreateTask() {
   const [text, setText] = React.useState('');
+  const dispatch = React.useContext(TasksDispatchContext);
 
   const handleText = (ev: React.ChangeEvent<HTMLInputElement>) => {
     setText(ev.target.value);
@@ -10,7 +14,16 @@ export default function FormCreateTask() {
   const handleAddTask = (ev: React.FormEvent) => {
     ev.preventDefault();
     // Dispatch actions
-    console.log('adding...', text);
+    const newTask: TaskData = {
+      id: uuidv4(),
+      name: text,
+      done: false,
+    };
+
+    dispatch({
+      type: 'added',
+      payload: newTask,
+    });
   };
 
   return (
