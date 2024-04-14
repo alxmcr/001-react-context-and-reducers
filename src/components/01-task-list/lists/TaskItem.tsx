@@ -7,6 +7,7 @@ type Props = {
 };
 
 export default function TaskItem({ task }: Props) {
+  const [isEditatable, setIsEditable] = React.useState(false);
   const dispatch = React.useContext(TasksDispatchContext);
 
   const handleDeleteTask = (taskId = '') => {
@@ -28,7 +29,7 @@ export default function TaskItem({ task }: Props) {
 
   return (
     <li className="flex items-center justify-between gap-3">
-      <label htmlFor={task.id} className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         <input
           type="checkbox"
           name={task.id}
@@ -36,12 +37,21 @@ export default function TaskItem({ task }: Props) {
           className="size-8"
           onChange={handleChecked}
         />
-        <span>{task.name}</span>
-      </label>
+        {isEditatable ? (
+          <div>
+            <p>Edit this</p>
+            <button onClick={() => setIsEditable(false)}>Save</button>
+          </div>
+        ) : (
+          <label htmlFor={task.id} className="flex items-center gap-3">
+            {task.name}
+          </label>
+        )}
+      </div>
       <div className="flex items-center gap-4">
         <button
           className="rounded-lg bg-blue-300 p-2 text-center"
-          onClick={() => handleChangeTask(task)}
+          onClick={() => setIsEditable(!isEditatable)}
         >
           Edit
         </button>
