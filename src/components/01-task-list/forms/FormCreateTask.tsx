@@ -24,6 +24,9 @@ export default function FormCreateTask() {
       type: 'added',
       payload: newTask,
     });
+
+    // Clear
+    setText('');
   };
 
   return (
