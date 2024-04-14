@@ -1,6 +1,7 @@
 import React from 'react';
 import { TaskData } from '../../../@types/appTypes';
 import { TasksDispatchContext } from '../../../providers/TasksContext';
+import FormEditTask from '../forms/FormEditTask';
 
 type Props = {
   task: TaskData;
@@ -38,10 +39,7 @@ export default function TaskItem({ task }: Props) {
           onChange={handleChecked}
         />
         {isEditatable ? (
-          <div>
-            <p>Edit this</p>
-            <button onClick={() => setIsEditable(false)}>Save</button>
-          </div>
+          <FormEditTask taskToUpdate={task} setIsEditable={setIsEditable} />
         ) : (
           <label htmlFor={task.id} className="flex items-center gap-3">
             {task.name}
